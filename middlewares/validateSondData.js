@@ -1,3 +1,8 @@
+const TEMP_MIN = -20;
+const TEMP_MAX = 100;
+const ID_MIN = 1;
+const ID_MAX = 5;
+
 export const validateSondData = (req, res, next) => {
 	try {
 		const { id, temperatura } = req.body;
@@ -5,11 +10,11 @@ export const validateSondData = (req, res, next) => {
 		const sondaId = parseInt(id);
 		const sondaTemperatura = parseFloat(temperatura);
 
-		if (isNaN(sondaId) || sondaId < 1 || sondaId > 5) {
+		if (isNaN(sondaId) || sondaId < ID_MIN || sondaId > ID_MAX) {
 			throw new Error('Número de sonda incorrecto');
 		}
 
-		if (isNaN(sondaTemperatura) || sondaTemperatura < -20 || sondaTemperatura > 100) {
+		if (isNaN(sondaTemperatura) || sondaTemperatura < TEMP_MIN || sondaTemperatura > TEMP_MAX) {
 			throw new Error('Temperatura fuera de rango (-20 a 100 °C)');
 		}
 

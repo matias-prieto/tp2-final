@@ -19,7 +19,7 @@ class SondaController {
 			const sondas = await sondaService.getAllSondas();
 			res.status(200).json(sondas);
 		} catch (error) {
-			res.status(500).json({ error: 'Error al obtener las sondas' });
+			res.status(error.statusCode).json({ error: 'Error al obtener las sondas' });
 		}
 	};
 
@@ -28,13 +28,13 @@ class SondaController {
 			const { id } = req.params;
 			const sonda = await sondaService.getSondaById(parseInt(id));
 
-			if (!sonda) {
+			if (!sonda || sonda.length === 0) {
 				return res.status(404).json({ error: 'Sonda no encontrada' });
 			}
 
 			res.status(200).json(sonda);
 		} catch (error) {
-			res.status(422).json({ error: 'Error al obtener la sonda' });
+			res.status(error.statusCode).json({ error: 'Error al obtener la sonda' });
 		}
 	};
 }
