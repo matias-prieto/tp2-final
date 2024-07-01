@@ -2,9 +2,7 @@
 import Sonda from "../Model/Sonda.js";
 
 class SondaService {
-	constructor() {
-		this.sondaData = [];
-	}
+	sondaData = [];
 
 	async createSonda(id, temperatura) {
 		const fechaHora = new Date().toISOString();

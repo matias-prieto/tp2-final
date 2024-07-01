@@ -26,9 +26,7 @@ class SondaController {
 	getSondaById = async (req, res) => {
 		try {
 			const { id } = req.params;
-			const sondaId = parseInt(id);
-
-			const sonda = await this.sondaService.getSondaById(sondaId);
+			const sonda = await sondaService.getSondaById(parseInt(id));
 
 			if (!sonda) {
 				return res.status(404).json({ error: 'Sonda no encontrada' });
@@ -36,7 +34,7 @@ class SondaController {
 
 			res.status(200).json(sonda);
 		} catch (error) {
-			res.status(500).json({ error: 'Error al obtener la sonda' });
+			res.status(422).json({ error: 'Error al obtener la sonda' });
 		}
 	};
 }
