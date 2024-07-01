@@ -1,4 +1,3 @@
-// import { palabraValida } from "../utils/utils.js";
 import Sonda from "../Model/Sonda.js";
 
 class SondaService {
@@ -15,8 +14,8 @@ class SondaService {
 		return this.sondaData;
 	}
 
-	async getSondaById(id) {
-		return this.sondaData.find(sonda => sonda.id === id);
+	async getSondasById(id) {
+		return this.sondaData.filter(sonda => sonda.id === id);
 	}
 }
 
